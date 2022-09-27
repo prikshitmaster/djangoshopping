@@ -1,11 +1,15 @@
 from django.shortcuts import render,HttpResponse
 
 # Create your views here.
-from home.models import Contact, Emailcollection
+from home.models.product import Contact, Emailcollection, AdminProduct
+from home.models.catorgry import Catorgry
 
 
 def index(request):
-    return render(request, 'index.html')
+    products = AdminProduct.get_all_product()
+    categrories = Catorgry.get_all_categories()
+    print(products)
+    return render(request, 'index.html' )
 
 
 def newsletterform(request):
